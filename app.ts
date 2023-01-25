@@ -1,6 +1,14 @@
-const person = {
+
+
+
+const person: {
+    name: string, 
+    hobbies: string[],  //ARRAY types
+    role: [number, string], //TUPLE types > Array types
+} = {
 	name: "Hana",
-	hobbies: ["martial arts", "reading", "cooking"]
+	hobbies: ["martial arts", "reading", "cooking"],
+    role: [2, 'author']
 }
 
 // Array types
