@@ -21,3 +21,5 @@ for (const hobby of person.hobbies) {
 	console.log(hobby.toUpperCase)
 	// console.log(hobby.map()) !!ERROR
 }
+
+
