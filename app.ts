@@ -15,18 +15,30 @@ console.log(sapiens.hobbies)
 // console.log(sapiens.nickname)
 
 // Union Type
-function combine(input1: number | string, input2: number | string) {
+function combine(
+	input1: number | string,
+	input2: number | string,
+	// Literal type with union type
+	resultConversion: "as-number" | "as-string"
+) {
 	let result
-	if (typeof input1 === "number" && typeof input2 === "number") {
-		result = input1 + input2
+	if (
+		(typeof input1 === "number" && typeof input2 === "number") ||
+		resultConversion === "as-number"
+	) {
+		result = +input1 + +input2
 	} else {
 		result = input1.toString() + input2.toString()
 	}
 	return result
 }
 
-const combinedAges = combine(33, 42)
+const combinedAges = combine(33, 42, "as-number")
 console.log(combinedAges)
 
-const combinedNames = combine("Max", "Anna")
+const combinedNames = combine("Max", "Anna", "as-string")
 console.log(combinedNames)
+
+// LITERAL Type
+// often used in the context of a Union type
+// resultConversion: "as-number" | "as-string"
