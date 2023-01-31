@@ -14,12 +14,16 @@ const sapiens: {
 console.log(sapiens.hobbies)
 // console.log(sapiens.nickname)
 
+// Type Alias
+type Combinable = number | string
+type ConversionDesc = "as-number" | "as-string"
+
 // Union Type
 function combine(
-	input1: number | string,
-	input2: number | string,
+	input1: Combinable,
+	input2: Combinable,
 	// Literal type with union type
-	resultConversion: "as-number" | "as-string"
+	resultConversion: ConversionDesc
 ) {
 	let result
 	if (
