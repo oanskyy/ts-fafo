@@ -14,8 +14,9 @@ const sapiens: {
 console.log(sapiens.hobbies)
 // console.log(sapiens.nickname)
 
-// Type Alias
+// Union Type
 type Combinable = number | string
+// Type Alias
 type ConversionDesc = "as-number" | "as-string"
 
 // Union Type & Literal type
@@ -46,3 +47,7 @@ console.log(combinedNames)
 // LITERAL Type
 // often used in the context of a Union type
 // resultConversion: "as-number" | "as-string"
+
+// Type narrowing 
+// A type guard is a conditional that checks if a variable is a certain type, like this:
+
