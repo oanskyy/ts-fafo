@@ -10,14 +10,13 @@ class Project {
 		public title: string,
 		public description: string,
 		public people: number,
-		// public status: "active" | "finished",
+		// public status: "active" | "finished" //
 		public status: ProjectStatus
 	) {}
 }
 
 // Project State Management
-
-type Listener = (items: Project[]) => void 
+type Listener = (items: Project[]) => void
 
 class ProjectState {
 	private listeners: Listener[] = []
@@ -136,7 +135,13 @@ class ProjectList {
 		this.element = importedNode.firstElementChild as HTMLElement
 		this.element.id = `${this.type}-projects`
 
-		projectState.addListener((projects: any[]) => {
+		projectState.addListener((projects: Project[]) => {
+			const relevantProjects = projects.filter(prj => {
+				if (this.type === "active") {
+					return prj.status === ProjectStatus.Active
+				}
+				return prj.status === ProjectStatus.Finished
+			})
 			this.assignedProjects = projects
 			this.renderProjects()
 		})
@@ -149,6 +154,7 @@ class ProjectList {
 		const listEl = document.getElementById(
 			`${this.type}-projects-list`
 		)! as HTMLUListElement
+		listEl.innerHTML = ""
 		for (const prjItem of this.assignedProjects) {
 			const listItem = document.createElement("li")
 			listItem.textContent = prjItem.title
