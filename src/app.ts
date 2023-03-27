@@ -165,8 +165,20 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
 
 // ProjectItem Class
 class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
-	constructor(hostId: string, id: string) {
-		super("single-project", hostId, false, id)
+	private project: Project
+
+	constructor(hostId: string, project: Project) {
+		super("single-project", hostId, false, project.id)
+		this.project = project
+	}
+
+	configure(): void {}
+
+	renderContent(): void {
+		this.element.querySelector("h2")!.textContent = this.project.title
+		this.element.querySelector("h3")!.textContent =
+			this.project.people.toString()
+		this.element.querySelector("p")!.textContent = this.project.description
 	}
 }
 
@@ -219,14 +231,15 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
 		)! as HTMLUListElement
 		listEl.innerHTML = ""
 		for (const prjItem of this.assignedProjects) {
-			const listItem = document.createElement("li")
-			listItem.textContent = prjItem.title
-			listEl.appendChild(listItem)
+			new ProjectItem(this.element.querySelector("ul")!.id, prjItem)
+			// const listItem = document.createElement("li")
+			// listItem.textContent = prjItem.title
+			// listEl.appendChild(listItem)
 		}
 	}
 }
 
-// ProjectInput Class
+// Project Input Class
 // restructure prj input to take advantage of inheritance and let the base class do a lot of the job
 class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 	titleInputElement: HTMLInputElement
