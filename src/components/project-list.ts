@@ -1,3 +1,9 @@
+/// <reference path="base-component.ts" />
+/// <reference path="../decorators/autobind.ts" />
+/// <reference path="../state/project-state.ts" />
+/// <reference path="../models/drag-drop.ts" />
+/// <reference path="../models/project.ts" />
+
 namespace App {
 	// ProjectList Class
 	export class ProjectList
@@ -56,7 +62,7 @@ namespace App {
 			this.element.addEventListener("drop", this.dropHandler)
 
 			projectState.addListener((projects: Project[]) => {
-				const relevantProjects = projects.filter(prj => {
+				projects.filter(prj => {
 					if (this.type === "active") {
 						return prj.status === ProjectStatus.Active
 					}
