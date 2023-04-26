@@ -4,7 +4,7 @@
 	// - but the concrete configuration needs to happen in the place where we inherit
 
 	// --mark this class as ABSTRACT class, because ppl should never directly instantiate it, should always be used for inheritance
-	export abstract class Component<
+	export default abstract class Component<
 		T extends HTMLElement,
 		U extends HTMLElement
 	> {
