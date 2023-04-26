@@ -1,4 +1,4 @@
-namespace App {
+
 	// Component Base Class/ Generics
 	// - does all the general rendering
 	// - but the concrete configuration needs to happen in the place where we inherit
@@ -45,4 +45,4 @@ namespace App {
 		abstract configure(): void
 		abstract renderContent(): void
 	}
-}
+

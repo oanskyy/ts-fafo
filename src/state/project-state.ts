@@ -1,4 +1,5 @@
-namespace App {
+import { Project , ProjectStatus} from "../models/project.js"
+
 	// Project State Management
 	// custom generic type
 	export type Listener<T> = (items: T[]) => void
@@ -61,4 +62,4 @@ namespace App {
 	}
 
 	export const projectState = ProjectState.getInstance()
-}
+
