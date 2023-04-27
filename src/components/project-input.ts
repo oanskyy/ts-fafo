@@ -1,7 +1,7 @@
-import { Validatable, validate } from "./../util/validation.js"
-import  Component  from "./base-component.js"
-import { autobind as Autobind } from "../decorators/autobind.js"
-import { projectState } from "../state/project-state.js"
+import { Validatable, validate } from "./../util/validation"
+import  Component  from "./base-component"
+import { autobind as Autobind } from "../decorators/autobind"
+import { projectState } from "../state/project-state"
 
 // Project Input Class
 // restructure prj input to take advantage of inheritance and let the base class do a lot of the job
